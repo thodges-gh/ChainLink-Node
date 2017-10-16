@@ -26,14 +26,6 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. 
 sudo apt update
 sudo apt install docker-ce
 ```
-
-## Install PostgreSQL
-```shell
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt update
-sudo apt upgrade
-sudo apt install postgresql-9.6
-```
  
 ## Set up PostgreSQL
 
