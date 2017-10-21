@@ -17,6 +17,26 @@ cd go-ethereum
 make geth
 ./build/bin/geth --rpc
 ```
+
+Open a new terminal
+```shell
+cd go-thereum/build/bin
+./geth account new
+```
+
+Enter in a password and confirm
+
+```shell
+./geth account list
+```
+
+You should see the account that you just created
+
+```shell
+./geth attach
+net.listening
+net.peerCount
+```
 Just let that run and open a new terminal to do the rest
 
 ## Installing docker:
