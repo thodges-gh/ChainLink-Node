@@ -38,3 +38,9 @@ You'll set your own prices (paid in LINK) for retriving data from 3rd party sour
 ## Does the ChainLink node need to be ran on the same machine as my Ethereum node?
 
 No, as long as you are running your Ethereum node with the --rpc flag and a port opened, you can configure the .env file to connect to a remote Ethereum node. Set the ETHEREUM_URL value to your remote Ethereum node and port.
+
+---
+
+## Does Ethereum need to run in --full mode?
+
+No, it's not necessary to download the entire blockchain history in order to run a ChainLink node. You're free to use either --fast or --light options when running geth, just make sure you also use the --rpc flag.
