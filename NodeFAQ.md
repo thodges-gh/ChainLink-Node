@@ -32,3 +32,9 @@ Mostly, but there are a few manual tasks that need to be accomplished. As a node
 ## Is there a reward system for running a node?
 
 You'll set your own prices for retriving data from 3rd party sources. It is not yet known how the node operator incentive fund will be used. So for now, the prices which you set on your node will be the only known form of income to node operators.
+
+---
+
+## Does the ChainLink node need to be ran on the same machine as my Ethereum node?
+
+No, as long as you are running your Ethereum node with the --rpc flag and a port opened, you can configure the .env file to connect to a remote Ethereum node. Set the ETHEREUM_URL value to your remote Ethereum node and port.
