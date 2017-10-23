@@ -20,7 +20,7 @@ make geth
 
 Open a new terminal
 ```shell
-cd go-thereum/build/bin
+cd go-ethereum/build/bin
 ./geth account new
 ```
 
