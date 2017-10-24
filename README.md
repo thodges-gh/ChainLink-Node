@@ -1,5 +1,5 @@
 # Running a Chainlink node!
-Spin up a VM running Debian Stretch (9)
+Spin up a VM running Debian Stretch (9). At least 2GB RAM and 16GB storage is recommended.
 
 Install what we can from the default repository:
 ```shell
