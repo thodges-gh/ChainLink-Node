@@ -3,7 +3,11 @@
 ## Install required packages
 
 ```script
-sudo apt install build-essential git libssl1.0-dev libssl-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
+# Ensure that your system is up to date and fully patched
+sudo apt update -y && sudo apt upgrade -y
+
+# Install dependencies
+sudo apt -y install build-essential git libssl1.0-dev libssl-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
 ```
 
 ## Set up Ruby
