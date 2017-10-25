@@ -11,7 +11,7 @@ sudo apt update -y && sudo apt upgrade -y
 Install what we can from the default repository:
 
 ```shell
-sudo apt -y install git build-essential golang-go net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql
+sudo apt -y install git build-essential net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql
 ```
 
 Start the ntp service
@@ -20,15 +20,7 @@ Start the ntp service
 sudo /etc/init.d/ntp start
 ```
 
-### Install Go 1.9.1 on Ubuntu
-
-If the above apt commands installs Go version 1.6, you will have to manually download and install Go 1.9.1, which is the latest stable version.
-
-First of all, remove the old installation of Go:
-
-```shell
-sudo apt -y purge golang-go
-```
+### Set up Go 1.9.1
 
 Download and install Go:
 
