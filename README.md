@@ -20,6 +20,31 @@ Start the ntp service
 sudo /etc/init.d/ntp start
 ```
 
+### Install Go 1.9.1 on Ubuntu
+
+If the above apt commands installs Go version 1.6, you will have to manually download and install Go 1.9.1, which is the latest stable version.
+
+First of all, remove the old installation of Go:
+
+```shell
+sudo apt -y purge golang-go
+```
+
+Download and install Go:
+
+```shell
+curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
+tar -xvf go1.9.1.linux-amd64.tar.gz
+sudo mv go /usr/local
+```
+
+Set the Go paths:
+
+```shell
+sudo echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+source ~/.profile
+```
+
 ## Install Ethereum locally (geth)
 
 Change 192.168.2.76 to your IP address
@@ -29,6 +54,8 @@ git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
 ./build/bin/geth --rpc --rpcaddr 192.168.2.76 --light
 ```
+
+If you get an error about go version when running `make geth`, see install Go 1.9.1 instructions above.
 
 Open a new terminal
 
