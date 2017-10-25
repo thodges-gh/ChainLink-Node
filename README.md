@@ -97,10 +97,8 @@ sudo /etc/init.d/postgresql restart
 
 ## Open up port 8545
 
-Change enp0s3 to your interface
-
 ```shell
-sudo iptables -A INPUT -i enp0s3 -p tcp --dport 8545 --jump ACCEPT
+sudo iptables -A INPUT -p tcp --dport 8545 --jump ACCEPT
 sudo iptables-save
 ```
 
