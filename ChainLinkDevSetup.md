@@ -10,7 +10,7 @@ sudo apt update -y && sudo apt upgrade -y
 Install dependencies
 
 ```script
-sudo apt -y install build-essential git libssl1.0-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
+sudo apt -y install build-essential git libssl1.0-dev libxml2-dev libxslt1-dev libreadline-dev zlib1g-dev postgresql-9.6 libpq-dev nodejs
 ```
 
 ## Set up Ruby
@@ -66,18 +66,20 @@ rake db:create db:migrate
  
 To run the full test suite, including integration tests, you need an instance of DevNet running on your machine. This requires first installing [Parity](https://github.com/paritytech/parity). Once Parity is installed, run the following commands:
 
-```
+```script
 git clone https://github.com/smartcontractkit/devnet.git
 cd devnet
 ./start
 ```
 
 Then to run the full test suite run:
- ```
+
+ ```script
  rake
  ```
 
 Or test a specific test:
-```
+
+```script
 rspec spec/models/assignment_spec.rb:57
 ```
