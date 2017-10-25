@@ -64,6 +64,12 @@ gem install bundler && bundle
 rake db:create db:migrate
 ```
 
+Start the server
+
+```script
+foreman start
+```
+
 ## Testing
  
 To run the full test suite, including integration tests, you need an instance of DevNet running on your machine. This requires first installing [Parity](https://github.com/paritytech/parity). Once Parity is installed, run the following commands:
