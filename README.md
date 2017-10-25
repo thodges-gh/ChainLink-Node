@@ -84,31 +84,14 @@ sudo apt -y install docker-ce
 ## Set up PostgreSQL
 
 ```shell
+# Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
 cd /etc/postgresql/9.6/main/
-sudo vim postgresql.conf
-```
 
-Add this line:
+# Add settings
+echo "listen_addresses = '*'" >> postgresql.conf
+echo "host  all  all 0.0.0.0/0 trust" >> pg_hba.conf
 
-```shell
-listen_addresses = '*'
-```
-
-Then run:
-
-```shell
-sudo vim pg_hba.conf
-```
-
-Add this line:
-
-```shell
-host  all  all 0.0.0.0/0 trust
-```
-
-Then run:
-
-```shell
+# Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
 ```
 
