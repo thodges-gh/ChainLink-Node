@@ -76,9 +76,9 @@ cd devnet
 
 Then to run the full test suite run:
 
- ```script
- rake
- ```
+```script
+rake
+```
 
 Or test a specific test:
 
