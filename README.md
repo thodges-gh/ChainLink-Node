@@ -3,7 +3,7 @@ Spin up a VM running Debian Stretch (9). At least 2GB RAM and 16GB storage is re
 
 Install what we can from the default repository:
 ```shell
-sudo apt install git build-essential golang-go net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql-9.6
+sudo apt -y install git build-essential golang-go net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql-9.6
 ```
 Start the ntp service
 ```shell
@@ -45,9 +45,9 @@ Just let that run and open a new terminal to do the rest
 ## Installing docker:
 ```shell
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
-sudo apt update
-sudo apt install docker-ce
+sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+sudo apt -y update
+sudo apt -y install docker-ce
 ```
  
 ## Set up PostgreSQL
