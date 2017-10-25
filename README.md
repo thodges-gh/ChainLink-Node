@@ -11,7 +11,7 @@ sudo apt update -y && sudo apt upgrade -y
 Install what we can from the default repository:
 
 ```shell
-sudo apt -y install git build-essential golang-go net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql-9.6
+sudo apt -y install git build-essential golang-go net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp postgresql
 ```
 
 Start the ntp service
