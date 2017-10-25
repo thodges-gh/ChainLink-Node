@@ -2,21 +2,36 @@
 
 ## Install required packages
 
-```script
-# Ensure that your system is up to date and fully patched
-sudo apt update -y && sudo apt upgrade -y
+Ensure that your system is up to date and fully patched
 
-# Install dependencies
+```script
+sudo apt update -y && sudo apt upgrade -y
+```
+Install dependencies
+
+```script
 sudo apt -y install build-essential git libssl1.0-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
 ```
 
 ## Set up Ruby
 
+Clone the repository
+
 ```script
 git clone git://github.com/sstephenson/rbenv.git $HOME/.rbenv
+```
+
+Set up local environment variables
+
+```script
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.bashrc
 echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
 exec $SHELL -l
+```
+
+Get and set up the build
+
+```script
 git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 rbenv install 2.3.1
 rbenv rehash
