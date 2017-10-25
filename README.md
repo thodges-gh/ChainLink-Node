@@ -11,11 +11,14 @@ sudo /etc/init.d/ntp start
 ```
 
 ## Install Ethereum locally (geth)
+
+Change 192.168.2.76 to your IP address
+
 ```shell
 git clone https://github.com/ethereum/go-ethereum.git
 cd go-ethereum
 make geth
-./build/bin/geth --rpc
+./build/bin/geth --rpc --rpcaddr 192.168.2.76 --light
 ```
 
 Open a new terminal
@@ -71,6 +74,15 @@ Then run:
 sudo /etc/init.d/postgresql restart
 ```
 
+## Open up port 8545
+
+Change enp0s3 to your interface
+
+```shell
+sudo iptables -A INPUT -i enp0s3 -p tcp --dport 8545 --jump ACCEPT
+sudo iptables-save
+```
+
 ## Finally set up Chainlink:
 ```shell
 cd
@@ -106,4 +118,8 @@ It will ask if you're ready to print coordinator credentials to the screen. You 
 And finally run this to actually start the node:
 ```shell
 sudo docker run -t --env-file=.env smartcontract/smartoracle
+```
+Test connection:
+```shell
+sudo docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Client.new.current_block_height"
 ```
