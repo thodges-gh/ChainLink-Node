@@ -26,6 +26,8 @@ ruby -v
 
 ## Set up PostgreSQL
 
+Substitute "thomas" for your own username
+
 ```script
 su -
 su postgres
