@@ -44,3 +44,23 @@ git clone https://github.com/smartcontractkit/chainlink.git && cd chainlink
 gem install bundler && bundle
 rake db:create db:migrate
 ```
+
+## Testing
+ 
+To run the full test suite, including integration tests, you need an instance of DevNet running on your machine. This requires first installing [Parity](https://github.com/paritytech/parity). Once Parity is installed, run the following commands:
+
+```
+git clone https://github.com/smartcontractkit/devnet.git
+cd devnet
+./start
+```
+
+Then to run the full test suite run:
+ ```
+ rake
+ ```
+
+Or test a specific test:
+```
+rspec spec/models/assignment_spec.rb:57
+```
