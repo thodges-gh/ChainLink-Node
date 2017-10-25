@@ -42,6 +42,7 @@ ruby -v
 ## Set up PostgreSQL
 
 Substitute "thomas" for your own username
+
 (If you accidentally hit Enter on the SQL commands without the semicolon, type \g to commit the command)
 
 ```script
