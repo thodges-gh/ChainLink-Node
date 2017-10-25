@@ -15,8 +15,7 @@ sudo /etc/init.d/ntp start
 Change 192.168.2.76 to your IP address
 
 ```shell
-git clone https://github.com/ethereum/go-ethereum.git
-cd go-ethereum
+git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
 ./build/bin/geth --rpc --rpcaddr 192.168.2.76 --light
 ```
