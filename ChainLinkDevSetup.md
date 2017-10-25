@@ -7,7 +7,7 @@
 sudo apt update -y && sudo apt upgrade -y
 
 # Install dependencies
-sudo apt -y install build-essential git libssl1.0-dev libssl-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
+sudo apt -y install build-essential git libssl1.0-dev libxml2-dev libxslt1-dev postgresql-9.6 libpq-dev nodejs
 ```
 
 ## Set up Ruby
