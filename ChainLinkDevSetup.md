@@ -46,7 +46,7 @@ rake db:create db:migrate
 To run the full test suite, including integration tests, you need an instance of DevNet running on your machine. This requires first installing [Parity](https://github.com/paritytech/parity). Once Parity is installed, run the following commands:
 
 ```
-git clone https://github.com/oraclekit/devnet.git
+git clone https://github.com/smartcontractkit/devnet.git
 cd devnet
 ./start
 ```
