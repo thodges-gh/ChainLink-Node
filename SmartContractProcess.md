@@ -26,21 +26,29 @@
 
 2.	Data Reporting
 
-    *	Nodes connect to external API endpoints via adapters
+    *	Nodes connect to external data sources via their API endpoints
+    
+    * Node processes received data through adapters
+    
+        * Data is parsed for the blockchain
 
-    *	Oracle digitally signs its response
+    *	Node digitally signs its response
 
-    *	Results are returned to the aggregation contract
+    *	Nodes send a hash of response plus a nonce (commitment)
 
 3.	Result Aggregation
 
-    *	Oracles reveal results to oracle contract
+    *	Nodes reveal results to oracle contract with their nonce
 
         * Oracle contract tallies results
 
         * Oracle contract calculates a weighted answer
 
     *	Validity of oracle responses are reported to the reputation contract
+    
+        * Responses are checked against their commitments from the Data Reporting phase
+        
+        * Responses that don't match their commitment are discarded
 
     *	Answer is returned to the user-created smart contract
 
