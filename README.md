@@ -33,7 +33,7 @@ sudo mv go /usr/local
 Set the Go paths:
 
 ```shell
-sudo echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 ```
 
@@ -87,9 +87,9 @@ sudo apt -y install docker-ce
 # Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
 cd /etc/postgresql/9.6/main/
 
-# Add settings
-echo "listen_addresses = '*'" >> postgresql.conf
-echo "host  all  all 0.0.0.0/0 trust" >> pg_hba.conf
+# Add settings by running these commands or manually appending the setting lines to the files
+sudo sh -c "echo \"listen_addresses = '*'\" >> postgresql.conf"
+sudo sh -c "echo \"host  all  all 0.0.0.0/0 trust\" >> pg_hba.conf"
 
 # Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
@@ -112,7 +112,7 @@ sudo docker pull smartcontract/chainlink
 Note the IP address for your host machine
 
 ```shell
-sudo ifconfig
+ifconfig
 ```
 
 ### Create a .env file
