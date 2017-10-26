@@ -49,7 +49,7 @@ make geth
 
 If you get an error about go version when running `make geth`, see install Go 1.9.1 instructions above.
 
-Open a new terminal
+Open a new terminal or screen
 
 ```shell
 cd go-ethereum/build/bin
@@ -70,7 +70,7 @@ net.listening
 net.peerCount
 ```
 
-Just let that run and open a new terminal to do the rest
+Just let that run and open a new terminal or screen to do the rest
 
 ## Installing docker:
 
