@@ -44,7 +44,7 @@ Change 192.168.2.76 to your IP address
 ```shell
 git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
-./build/bin/geth --rpc --rpcaddr 192.168.2.76 --light
+./build/bin/geth --rpc --rpcaddr 192.168.2.76 --syncmode "light"
 ```
 
 If you get an error about go version when running `make geth`, see install Go 1.9.1 instructions above.
