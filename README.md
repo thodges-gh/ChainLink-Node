@@ -83,13 +83,15 @@ sudo apt -y install docker-ce
  
 ## Set up PostgreSQL
 
+Change 172.17.0.2/16 to your Docker image's IP address
+
 ```shell
 # Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
 cd /etc/postgresql/9.6/main/
 
 # Add settings by running these commands or manually appending the setting lines to the files
 sudo sh -c "echo \"listen_addresses = '*'\" >> postgresql.conf"
-sudo sh -c "echo \"host  all  all 0.0.0.0/0 trust\" >> pg_hba.conf"
+sudo sh -c "echo \"host all all 172.17.0.2/16 trust\" >> pg_hba.conf"
 
 # Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
