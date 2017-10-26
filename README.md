@@ -151,3 +151,20 @@ Test connection:
 ```shell
 sudo docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Client.new.current_block_height"
 ```
+
+### Stopping the node
+
+If you want to stop the ChainLink node, you need to kill the entire docker container.
+
+First, get a list of running docker containers with:
+
+```shell
+sudo docker ps
+```
+
+Look for the line where "image" is set to `smartcontract/smartoracle`.
+Copy the container id and use it in the following command: (e.g. `docker kill 23e27b5e63fb`)
+
+```shell
+sudo docker kill CONTAINER_ID
+```
