@@ -35,6 +35,12 @@ You'll set your own prices (paid in LINK) for retriving data from 3rd party sour
 
 ---
 
+## What is the process for how the LINK token is used?
+
+When a user creates a smart contract, they'll be able to put a price (in LINK) on how much they're willing to pay for the data retrieval. Nodes will bid (in LINK) on those smart contracts and pay the penalty fee (in LINK). Nodes not selected will be able to withdraw their LINK that they spent on bidding. Nodes that were selected will be able to withdraw their penalty fee and rewards for data retrieval after they have submitted data which was accepted by the smart contract.
+
+---
+
 ## Does the ChainLink node need to be ran on the same machine as my Ethereum node?
 
 No, as long as you are running your Ethereum node with the --rpc flag and a port opened, you can configure the .env file to connect to a remote Ethereum node. Set the ETHEREUM_URL value to your remote Ethereum node and port.
