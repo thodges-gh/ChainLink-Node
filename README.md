@@ -88,7 +88,29 @@ su $USER
  
 ## Set up PostgreSQL
 
-Replace 192.168.1.101/16 with your IP/netmask
+When setting up PostgreSQL we need to allow connections from docker images.
+
+First, find the network interface used by Docker by running:
+
+```shell
+sudo ifconfig
+```
+
+This will write out two columns, the interface name on the left and a block of text on the right. Look for the interface named `docker0`.
+
+The output should look something like this:
+
+```shell
+$ sudo ifconfig
+docker0   Link encap:Ethernet  HWaddr 02:42:0a:6a:da:ea  
+          inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
+          inet6 addr: fe80::42:aff:fe6a:daea/64 Scope:Link
+          [...]
+```
+
+Write down the IP shown after `inet addr:`. It may not be the same as the example above, but should be an IPv4 address.
+
+Next, add the settings to the PostgreSQL configuration files. Replace the example IP below with the IP you found above.
 
 ```shell
 # Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
@@ -96,7 +118,8 @@ cd /etc/postgresql/9.6/main/
 
 # Add settings by running these commands or manually appending the setting lines to the files
 sudo sh -c "echo \"listen_addresses = '*'\" >> postgresql.conf"
-sudo sh -c "echo \"host all all 192.168.1.101/16 trust\" >> pg_hba.conf"
+# Remember to replace the IP with your Docker IP
+sudo sh -c "echo \"host all all 172.17.0.1/16 trust\" >> pg_hba.conf"
 
 # Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
