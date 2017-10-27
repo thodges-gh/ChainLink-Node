@@ -91,7 +91,7 @@ su $USER
 Replace 192.168.1.101/16 with your IP/netmask
 
 ```shell
-# Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
+# Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
 cd /etc/postgresql/9.6/main/
 
 # Add settings by running these commands or manually appending the setting lines to the files
