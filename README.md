@@ -72,18 +72,25 @@ net.peerCount
 
 Just let that run and open a new terminal or screen to do the rest
 
-## Installing docker:
+## Installing Docker:
 
 ```shell
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
 sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
 sudo apt -y update
 sudo apt -y install docker-ce
+
+# Allows use of docker commands without sudo
+sudo gpasswd -a $USER docker
+su $USER
+
+# Sets some needed environment variables
+DOCKER_NAME=`docker ps --format "{{.Names}}"`
+DOCKER_IP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $DOCKER_NAME`
 ```
+
  
 ## Set up PostgreSQL
-
-Change 172.17.0.2/16 to your Docker image's IP address
 
 ```shell
 # Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
@@ -91,7 +98,7 @@ cd /etc/postgresql/9.6/main/
 
 # Add settings by running these commands or manually appending the setting lines to the files
 sudo sh -c "echo \"listen_addresses = '*'\" >> postgresql.conf"
-sudo sh -c "echo \"host all all 172.17.0.2/16 trust\" >> pg_hba.conf"
+sudo sh -c "echo \"host all all \"$DOCKER_IP\"/16 trust\" >> pg_hba.conf"
 
 # Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
@@ -108,13 +115,13 @@ sudo iptables-save
 
 ```shell
 cd
-sudo docker pull smartcontract/chainlink
+docker pull smartcontract/chainlink
 ```
 
 Note the IP address for your host machine
 
 ```shell
-ifconfig
+sudo ifconfig
 ```
 
 ### Create a .env file
@@ -122,22 +129,20 @@ ifconfig
 ```shell
 vim .env
 ```
+You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL
 
-Use this text as example, but change the IP to your non-loopback-IP-address:
+Use this text as example, but change the IP to your machine's address:
 
 ```shell
 DATABASE_URL=postgresql://postgres@10.0.2.15:5432/nayru_development?encoding=utf8&pool=5&timeout=5000
-EMAIL_USERNAME=sender@example.com
-EMAIL_PASSWORD=password
 ETHEREUM_URL=http://10.0.2.15:8545
-ETHEREUM_EXPLORER_URL=https://testnet.etherscan.io
-NOTIFICATION_EMAIL=receiver@exmaple.com
+ETHEREUM_EXPLORER_URL=https://etherscan.io
 ```
 
 Run this to initialize the database:
 
 ```shell
-sudo docker run -it --env-file=.env smartcontract/chainlink rake oracle:initialize
+docker run -it --env-file=.env smartcontract/chainlink rake oracle:initialize
 ```
 
 It will ask if you're ready to print coordinator credentials to the screen. You need to actually type "Y" for it to print out the coordinators. Copy them into a text file.
@@ -145,13 +150,13 @@ It will ask if you're ready to print coordinator credentials to the screen. You 
 And finally run this to actually start the node:
 
 ```shell
-sudo docker run -t --env-file=.env smartcontract/smartoracle
+docker run -t --env-file=.env smartcontract/smartoracle
 ```
 
 Test connection:
 
 ```shell
-sudo docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Client.new.current_block_height"
+docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Client.new.current_block_height"
 ```
 
 ### Stopping the node
@@ -161,12 +166,12 @@ If you want to stop the ChainLink node, you need to kill the entire docker conta
 First, get a list of running docker containers with:
 
 ```shell
-sudo docker ps
+docker ps
 ```
 
 Look for the line where "image" is set to `smartcontract/smartoracle`.
 Copy the container id and use it in the following command: (e.g. `docker kill 23e27b5e63fb`)
 
 ```shell
-sudo docker kill CONTAINER_ID
+docker kill CONTAINER_ID
 ```
