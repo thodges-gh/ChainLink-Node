@@ -83,14 +83,12 @@ sudo apt -y install docker-ce
 # Allows use of docker commands without sudo
 sudo gpasswd -a $USER docker
 su $USER
-
-# Sets some needed environment variables
-DOCKER_NAME=`docker ps --format "{{.Names}}"`
-DOCKER_IP=`docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $DOCKER_NAME`
 ```
 
  
 ## Set up PostgreSQL
+
+Replace 192.168.1.101/16 with your IP/netmask
 
 ```shell
 # Replace 9.6 with your version number if the directory doesn't exist. E.g. 9.5 on Ubuntu
@@ -98,7 +96,7 @@ cd /etc/postgresql/9.6/main/
 
 # Add settings by running these commands or manually appending the setting lines to the files
 sudo sh -c "echo \"listen_addresses = '*'\" >> postgresql.conf"
-sudo sh -c "echo \"host all all \"$DOCKER_IP\"/16 trust\" >> pg_hba.conf"
+sudo sh -c "echo \"host all all 192.168.1.101/16 trust\" >> pg_hba.conf"
 
 # Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
