@@ -23,9 +23,9 @@ No, holding LINK is just one of 6 factors when determining a node’s ranking. H
 
 ---
 
-## Is running a node going to be like passive income?
+## How active do I need to be with running a node?
 
-Mostly, but there are a few manual tasks that need to be accomplished. As a node operator, you will need to establish connections to different API endpoints which would feed data back to a smart contract. You will also need to ensure that the system is well-maintained and updated with the latest security patches. Also, your “income” for running a node will be paid entirely in LINK, so it will be up to you to convert that to FIAT.
+There are a few manual tasks that need to be accomplished. As a node operator, you will need to establish connections to different API endpoints which would feed data back to a smart contract. You will also need to ensure that the system is well-maintained and updated with the latest security patches.
 
 ---
 
