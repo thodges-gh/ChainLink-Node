@@ -20,12 +20,6 @@ Start the ntp service
 sudo /etc/init.d/ntp start
 ```
 
-Start using screen
-
-```shell
-screen
-```
-
 ## Installing Docker:
 
 ```shell
@@ -37,6 +31,12 @@ sudo apt -y install docker-ce
 # Allows use of docker commands without sudo
 sudo gpasswd -a $USER docker
 su $USER
+```
+
+Start using screen
+
+```shell
+screen
 ```
 
 ### Set up Go 1.9.1
