@@ -136,7 +136,7 @@ sudo sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
 sudo /etc/init.d/postgresql restart
 ```
 
-## Open up port 8545 & 5432
+## (Optional) Open up port 8545 & 5432
 
 ```shell
 sudo iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 -d 172.17.0.1  --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
