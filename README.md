@@ -70,20 +70,21 @@ Create a new screen
 Ctrl a, c
 ```
 
-Create a new wallet in Geth
+Create a new wallet in Geth. Enter in a password and confirm.
 
 ```shell
 cd go-ethereum/build/bin
 ./geth account new
 ```
 
-Enter in a password and confirm
+Test the account and connection over RPC
 
 ```shell
 ./geth account list
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":1}' http://172.17.0.1:8545
 ```
 
-You should see the account that you just created
+You should see the account that you just created from both commands
 
 ```shell
 ./geth attach
@@ -99,50 +100,22 @@ Ctrl a, c
  
 ## Set up PostgreSQL
 
-When setting up PostgreSQL we need to allow connections from docker images.
-
-First, find the network interface used by Docker by running:
+Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
 
 ```shell
-sudo ifconfig
-```
-
-This will write out two columns, the interface name on the left and a block of text on the right. Look for the interface named `docker0`.
-
-The output should look something like this:
-
-```shell
-$ sudo ifconfig
-docker0   Link encap:Ethernet  HWaddr 02:42:0a:6a:da:ea  
-          inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
-          inet6 addr: fe80::42:aff:fe6a:daea/64 Scope:Link
-          [...]
-```
-
-Write down the IP shown after `inet addr:`. It may not be the same as the example above, but should be an IPv4 address.
-
-Next, add the settings to the PostgreSQL configuration files. Replace the example IP below with the IP you found above.
-
-```shell
-# Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
 cd /etc/postgresql/9.6/main/
-
-# Add settings by running these commands or manually appending the setting lines to the files
-sudo sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
-# Remember to replace the IP with your Docker IP
-sudo sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
-
-# Restart PostgreSQL
-sudo /etc/init.d/postgresql restart
 ```
 
-## (Optional) Open up port 8545 & 5432
+Add settings by running these commands or manually appending the setting lines to the files
 
 ```shell
-sudo iptables -A INPUT -p tcp -s 0/0 --sport 1024:65535 -d 172.17.0.1  --dport 5432 -m state --state NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp -s 172.17.0.1 --sport 5432 -d 0/0 --dport 1024:65535 -m state --state ESTABLISHED -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 8545 --jump ACCEPT
-sudo iptables-save
+sudo sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
+sudo sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
+```
+Restart PostgreSQL
+
+```shell 
+sudo /etc/init.d/postgresql restart
 ```
 
 ## Finally set up Chainlink:
@@ -158,8 +131,6 @@ docker pull smartcontract/chainlink
 vim .env
 ```
 You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL
-
-Use this text as example, but change the IP to your docker0 interface address if it's different:
 
 ```shell
 DATABASE_URL=postgresql://postgres@172.17.0.1:5432/nayru_development?encoding=utf8&pool=5&timeout=5000
@@ -181,7 +152,7 @@ And finally run this to actually start the node:
 docker run -t --env-file=.env smartcontract/smartoracle
 ```
 
-Test connection:
+Test connection (should be up to date with current Ethereum block):
 
 ```shell
 docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Client.new.current_block_height"
