@@ -4,7 +4,7 @@ Spin up a VM running Debian Stretch (9). 2 cores, 4GB RAM, and 16GB storage is r
 
 Ensure that your system is up to date and fully patched
 
-```script
+```shell
 sudo apt update -y && sudo apt upgrade -y
 ```
 
@@ -64,11 +64,7 @@ make geth
 ./build/bin/geth --rpc --rpcaddr 172.17.0.1 --syncmode "light"
 ```
 
-Create a new screen
-
-```shell
-Ctrl a, c
-```
+Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>
 
 Create a new wallet in Geth. Enter in a password and confirm.
 
@@ -92,11 +88,7 @@ net.listening
 net.peerCount
 ```
 
-Create a new screen
-
-```shell
-Ctrl a, c
-```
+Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>
  
 ## Set up PostgreSQL
 
@@ -112,6 +104,7 @@ Add settings by running these commands or manually appending the setting lines t
 sudo sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
 sudo sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
 ```
+
 Restart PostgreSQL
 
 ```shell 
@@ -130,6 +123,7 @@ docker pull smartcontract/chainlink
 ```shell
 vim .env
 ```
+
 You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL
 
 ```shell
