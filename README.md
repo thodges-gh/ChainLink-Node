@@ -64,7 +64,7 @@ make geth
 ./build/bin/geth --rpc --rpcaddr 172.17.0.1 --syncmode "light"
 ```
 
-Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>
+Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
 
 Create a new wallet in Geth. Enter in a password and confirm.
 
@@ -88,7 +88,7 @@ net.listening
 net.peerCount
 ```
 
-Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>Ctrl</kbd>+<kbd>C</kbd>
+Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
  
 ## Set up PostgreSQL
 
