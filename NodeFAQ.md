@@ -49,4 +49,4 @@ No, as long as you are running your Ethereum node with the --rpc flag and a port
 
 ## Does Ethereum need to run in --full mode?
 
-No, it's not necessary to download the entire blockchain history in order to run a ChainLink node. You're free to use either --fast or --light options when running geth, just make sure you also use the --rpc flag.
+No, it's not necessary to download the entire blockchain history in order to run a ChainLink node. You're free to use either --fast or --syncmode "light" options when running geth, just make sure you also use the --rpc flag.
