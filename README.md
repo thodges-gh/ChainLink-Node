@@ -143,7 +143,7 @@ It will ask if you're ready to print coordinator credentials to the screen. You 
 And finally run this to actually start the node:
 
 ```shell
-docker run -t --env-file=.env smartcontract/smartoracle
+docker run -t --env-file=.env smartcontract/chainlink
 ```
 
 Test connection (should be up to date with current Ethereum block):
