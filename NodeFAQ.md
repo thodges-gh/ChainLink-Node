@@ -2,7 +2,7 @@
 
 ## How much LINK is required to be a node operator?
 
-No LINK is required in order to be a node operator. However, holding LINK on your node (first form of staking) helps with ranking your node against others. Your node will also need some LINK in order to bid on smart contracts with the penalty amount. If the node is not selected to perform the job, or the node successfully completes the job, then it can retrieve that paid penalty amount (second form of staking).
+No LINK is required in order to be a node operator. However, holding LINK on your node (commonly referred to as staking) helps with ranking your node against others. Your node will also need some LINK in order to bid on smart contracts with the penalty amount. If the node is not selected to perform the job, or the node successfully completes the job, then it can retrieve that paid penalty amount.
 
 ---
 
