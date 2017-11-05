@@ -121,15 +121,15 @@ docker pull smartcontract/chainlink
 ### Create a .env file
 
 ```shell
-vim .env
+touch .env
 ```
 
 You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL
 
 ```shell
-DATABASE_URL=postgresql://postgres@172.17.0.1:5432/nayru_development?encoding=utf8&pool=5&timeout=5000
-ETHEREUM_URL=http://172.17.0.1:8545
-ETHEREUM_EXPLORER_URL=https://etherscan.io
+echo "DATABASE_URL=postgresql://postgres@172.17.0.1:5432/nayru_development?encoding=utf8&pool=5&timeout=5000" >> .env
+echo "ETHEREUM_URL=http://172.17.0.1:8545" >> .env
+echo "ETHEREUM_EXPLORER_URL=https://etherscan.io" >> .env
 ```
 
 Run this to initialize the database:
