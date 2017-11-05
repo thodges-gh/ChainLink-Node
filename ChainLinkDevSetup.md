@@ -33,9 +33,9 @@ Get and set up the build
 
 ```script
 git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
-rbenv install 2.3.1
+rbenv install 2.3.5
 rbenv rehash
-rbenv global 2.3.1
+rbenv global 2.3.5
 ruby -v
 ```
 
