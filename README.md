@@ -33,7 +33,7 @@ sudo gpasswd -a $USER docker
 su $USER
 ```
 
-Start using screen
+(Optional) Start using screen
 
 ```shell
 screen
@@ -64,7 +64,7 @@ make geth
 ./build/bin/geth --rpc --rpcaddr 172.17.0.1 --syncmode "light"
 ```
 
-Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
+Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
 
 Create a new wallet in Geth. Enter in a password and confirm.
 
@@ -88,7 +88,7 @@ net.listening
 net.peerCount
 ```
 
-Create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
+Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
  
 ## Set up PostgreSQL
 
