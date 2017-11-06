@@ -27,8 +27,8 @@
 ## Adapter Workflow
 * Perform request to an external API
 * Process response and either:
-* Return to the core (ChainLink node software), or
-* Pass value to the next adapter
+    * Return to the core (ChainLink node software), or
+    * Pass value to the next adapter
 
 ## Future changes planned for adapters
 * Allow for adapters to pull data from sub tasks other than the immediate predecessor
