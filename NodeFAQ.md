@@ -19,12 +19,14 @@ No LINK is required in order to be a node operator. However, holding LINK on you
 
 ## Wouldn’t holding millions of LINK automatically rank you to the top above the other nodes?
 
-No, holding LINK is just one of 6 factors when determining a node’s ranking. Having LINK on a node helps get the node started, but there is a point of diminishing returns for how much LINK to hold.
+No, holding LINK is just one of the factors when determining a node’s ranking. Having LINK on a node helps get the node started, but there is a point of diminishing returns for how much LINK to hold.
 
 ---
 
 ## What are the factors for ranking a node?
 
+* Availability (uptime)
+* Correctness of responses
 * Total number of assigned requests
 * Total number of completed requests
 * Total number of accepted requests
