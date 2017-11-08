@@ -65,30 +65,6 @@ make geth
 ```
 
 Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
-
-Create a new wallet in Geth. Enter in a password and confirm.
-
-```shell
-cd go-ethereum/build/bin
-./geth account new
-```
-
-Test the account and connection over RPC
-
-```shell
-./geth account list
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_accounts","params":[],"id":1}' http://172.17.0.1:8545
-```
-
-You should see the account that you just created from both commands
-
-```shell
-./geth attach
-net.listening
-net.peerCount
-```
-
-Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
  
 ## Set up PostgreSQL
 
