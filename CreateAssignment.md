@@ -17,7 +17,7 @@ source ~/.bashrc
 Make sure the following environment variables are defined in your ~/.env file
 
 ```shell
-ETHEREUM_MINIMUM_GAS_PRICE=0.000000001
+ETHEREUM_GAS_PRICE_MINIMUM=0.000000001
 ```
 
 Create the assignment
