@@ -7,7 +7,7 @@
 1. Wait until a query is received from the user-created smart contract
 2. Select nodes from the set of all valid session IDs
 3. Broadcast the query to the selected nodes
-4. Wait until messages are received from enough oracles to account for faulty nodes
+4. Wait until commit messages are received from enough oracles to account for faulty nodes
 5. Broadcast that enough messages were received
 6. Wait until decommitments are received from enough oracles to account for honest nodes
 7. Send the answer along with the nodes that provided it to the user-created smart contract
