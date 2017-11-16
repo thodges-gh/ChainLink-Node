@@ -38,6 +38,7 @@ su $USER
 ```shell
 screen
 ```
+### If using a separate machine for your Ethereum node, skip to the PostgreSQL section
 
 ### Set up Go 1.9.1
 
@@ -106,6 +107,12 @@ You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in th
 echo "DATABASE_URL=postgresql://postgres@172.17.0.1:5432/nayru_development?encoding=utf8&pool=5&timeout=5000" >> .env
 echo "ETHEREUM_URL=http://172.17.0.1:8545" >> .env
 echo "ETHEREUM_EXPLORER_URL=https://etherscan.io" >> .env
+```
+
+Before running the next line, please change the password to something that you prefer
+
+```shell
+echo "PRIVATE_KEY_PASSWORD=passwordchangeme" >> .env
 ```
 
 Run this to initialize the database:
