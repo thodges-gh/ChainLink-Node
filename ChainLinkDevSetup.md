@@ -62,6 +62,7 @@ exit
 git clone https://github.com/smartcontractkit/chainlink.git && cd chainlink
 gem install bundler && bundle
 rake db:create db:migrate
+rake oracle:initialize
 ```
 
 Start the server
