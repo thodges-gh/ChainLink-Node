@@ -20,15 +20,29 @@ Start the ntp service
 sudo /etc/init.d/ntp start
 ```
 
-## Installing Docker:
+## Installing Docker
+
+Debian
 
 ```shell
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
 sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
 sudo apt -y update
 sudo apt -y install docker-ce
+```
 
-# Allows use of docker commands without sudo
+Ubuntu (17.04+, Artful doesn't have its own release yet, Zesty works fine)
+
+```shell
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable"
+sudo apt -y update
+sudo apt -y install docker-ce
+```
+
+Allow use of Docker commands without sudo
+
+```shell
 sudo gpasswd -a $USER docker
 su $USER
 ```
