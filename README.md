@@ -4,20 +4,46 @@ Spin up a VM running Debian Stretch (9). 2 cores, 4GB RAM, and 16GB storage is r
 
 Ensure that your system is up to date and fully patched
 
+Debian & Ubuntu
+
 ```shell
 sudo apt update -y && sudo apt upgrade -y
 ```
 
+CentOS
+
+```shell
+sudo yum update && sudo yum upgrade -y
+```
+
+
+
 Install what we can from the default repository:
+
+Debian & Ubuntu
 
 ```shell
 sudo apt -y install git build-essential net-tools vim apt-transport-https ca-certificates curl wget gnupg2 software-properties-common ntp screen postgresql
 ```
 
+CentOS
+
+```shell
+sudo yum -y install git gcc gcc-c++ make openssl-devel net-tools vim ca-certificates curl wget gnupg2 ntp screen postgresql-server postgresql-contrib yum-utils
+```
+
 Start the ntp service
+
+Debian & Ubuntu
 
 ```shell
 sudo /etc/init.d/ntp start
+```
+
+CentOS
+
+```shell
+sudo systemctl start ntpd
 ```
 
 ## Installing Docker
@@ -38,6 +64,14 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable"
 sudo apt -y update
 sudo apt -y install docker-ce
+```
+
+CentOS
+
+```shell
+sudo yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum -y install docker-ce
+sudo systemctl start docker
 ```
 
 Allow use of Docker commands without sudo
@@ -81,7 +115,7 @@ make geth
 
 Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
  
-## Set up PostgreSQL
+## Set up PostgreSQL (Debian & Ubuntu)
 
 Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
 
@@ -89,7 +123,7 @@ Replace 9.6 with your version number. You can find this with "ls /etc/postgresql
 cd /etc/postgresql/9.6/main/
 ```
 
-Add settings by running these commands or manually appending the setting lines to the files
+If you're setting up the node with different IPs, change them here
 
 ```shell
 sudo sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
@@ -100,6 +134,30 @@ Restart PostgreSQL
 
 ```shell 
 sudo /etc/init.d/postgresql restart
+```
+
+## Set up PostgreSQL (CentOS)
+
+Init the database
+
+```shell
+sudo postgresql-setup initdb
+```
+
+If you're setting up the node with different IPs, change them here
+
+```shell
+sudo su postgres 
+cd /var/lib/pgsql/data
+sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
+sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
+exit
+```
+
+Start PostgreSQL
+
+```shell
+sudo systemctl start postgresql
 ```
 
 ## Finally set up Chainlink:
