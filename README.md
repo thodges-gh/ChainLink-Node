@@ -181,7 +181,7 @@ echo "ETHEREUM_URL=http://172.17.0.1:8545" >> .env
 echo "ETHEREUM_EXPLORER_URL=https://etherscan.io" >> .env
 ```
 
-Before running the next line, please <mark>change the password</mark> to something that you prefer
+Before running the next line, please <mark>**change the password**</mark> to something that you prefer
 
 ```shell
 echo "PRIVATE_KEY_PASSWORD=passwordchangeme" >> .env
