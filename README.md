@@ -1,6 +1,6 @@
 # Running a Chainlink node!
 
-Spin up a VM running Debian Stretch (9). 2 cores, 4GB RAM, and 16GB storage is recommended.
+2 cores, 4GB RAM, and 16GB storage is recommended.
 
 Ensure that your system is up to date and fully patched
 
@@ -200,6 +200,8 @@ And finally run this to actually start the node:
 ```shell
 docker run -t --env-file=.env smartcontract/chainlink
 ```
+
+Assignment creations use port 5100 by default, you could also specify a port using `-p ####:####` in the command above to expose another port.
 
 Test connection (should be up to date with current Ethereum block):
 
