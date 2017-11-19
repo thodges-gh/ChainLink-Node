@@ -88,13 +88,13 @@ screen
 ```
 ### If using a separate machine for your Ethereum node, skip to the PostgreSQL section
 
-### Set up Go 1.9.1
+### Set up Go 1.9.2
 
 Download and install Go:
 
 ```shell
-curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
-tar -xvf go1.9.1.linux-amd64.tar.gz
+curl -O https://storage.googleapis.com/golang/go1.9.2.linux-amd64.tar.gz
+tar -xvf go1.9.2.linux-amd64.tar.gz
 sudo mv go /usr/local
 ```
 
