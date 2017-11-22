@@ -113,6 +113,8 @@ make geth
 ./build/bin/geth --rpc --rpcaddr 172.17.0.1 --syncmode "light"
 ```
 
+Running geth with the `--fast` option will also work instead of `--syncmode "light"`, but you can't do both
+
 Send it to the background with <kbd>Ctrl</kbd>+<kbd>Z</kbd> or create a new screen with <kbd>Ctrl</kbd>+<kbd>A</kbd>, <kbd>C</kbd>
  
 ## Set up PostgreSQL (Debian & Ubuntu)
