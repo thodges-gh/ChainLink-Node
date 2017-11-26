@@ -73,3 +73,7 @@ docker run -it --env-file=.env smartcontract/chainlink rake oracle:initialize
 ### What is the other address for in the key_pairs table?
 
 That was used for testing in a previous release of the ChainLink software and will be deprecated in the future
+
+### Will I also need to send ETH to the address for gas to move LINK?
+
+Yes, you will need some ETH to be used for gas. The amount can vary depending on how many assignments the node will accept.
