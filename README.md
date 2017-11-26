@@ -138,6 +138,12 @@ Restart PostgreSQL
 sudo /etc/init.d/postgresql restart
 ```
 
+Start PostgreSQL at boot
+
+```shell
+sudo update-rc.d postgresql enable
+```
+
 ## Set up PostgreSQL (CentOS)
 
 Init the database
@@ -160,6 +166,12 @@ Start PostgreSQL
 
 ```shell
 sudo systemctl start postgresql
+```
+
+Start PostgreSQL at boot
+
+```shell
+sudo systemctl enable postgresql
 ```
 
 ## Finally set up Chainlink:
