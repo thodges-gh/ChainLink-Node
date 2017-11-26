@@ -1,6 +1,6 @@
 # Ethereum Account on ChainLink
 
-## BEFORE ANYTHING
+## Read this first
 
 Please make sure that you have the `PRIVATE_KEY_PASSWORD` variable set within your .env file BEFORE running the `rake oracle:initialize` command to initialize the database.
 
