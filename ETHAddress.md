@@ -77,3 +77,18 @@ That was used for testing in a previous release of the ChainLink software and wi
 ### Will I also need to send ETH to the address for gas to move LINK?
 
 Yes, you will need some ETH to be used for gas. The amount can vary depending on how many assignments the node will accept.
+
+## Commands
+
+### Obtain the node's public address
+
+```shell
+docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Account.default.key_pair.ethereum_address"
+```
+
+### Obtain the node's associated private key
+
+
+```shell
+docker run -it --env-file=.env smartcontract/chainlink rails runner "puts Ethereum::Account.default.key_pair.private_key"
+```
