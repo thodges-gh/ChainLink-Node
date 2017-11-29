@@ -59,6 +59,8 @@ source ~/.profile
 
 ### Install Ethereum locally (geth)
 
+Replace `GETH_NODE_IP` with the IP of the machine running the Geth node
+
 ```shell
 git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
@@ -91,7 +93,7 @@ Replace 9.6 with your version number. You can find this with "ls /etc/postgresql
 cd /etc/postgresql/9.6/main/
 ```
 
-If you're setting up the node with different IPs, change them here
+If you're setting up the node with different IPs, change them here. Replace `CHAINLINK_IP` and `CHAINLINK_IP/##` with the IP of the machine running the ChainLink node. The `/##` should be the prefix for the subnet mask.
 
 ```shell
 sudo sh -c "echo \"listen_addresses = 'CHAINLINK_IP'\" >> postgresql.conf"
@@ -118,7 +120,7 @@ Init the database
 sudo postgresql-setup initdb
 ```
 
-If you're setting up the node with different IPs, change them here
+If you're setting up the node with different IPs, change them here. Replace `CHAINLINK_IP` and `CHAINLINK_IP/##` with the IP of the machine running the ChainLink node. The `/##` should be the prefix for the subnet mask.
 
 ```shell
 sudo su postgres 
@@ -203,7 +205,7 @@ docker pull smartcontract/chainlink
 touch .env
 ```
 
-You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL
+You can also use POSTGRES_USER and POSTGRES_PASSWORD environment variables in the .env file if you set up a different user in PostgreSQL. Replace `POSTGRES_IP` with the IP of the server running PostgreSQL and `GETH_NODE_IP` with the IP of the machine running the Geth node
 
 ```shell
 echo "DATABASE_URL=postgresql://postgres@POSTGRES_IP:5432/nayru_development?encoding=utf8&pool=5&timeout=5000" >> .env
