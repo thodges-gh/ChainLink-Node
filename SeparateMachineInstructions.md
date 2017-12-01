@@ -10,13 +10,13 @@ Debian & Ubuntu
 sudo apt update -y && sudo apt upgrade -y
 ```
 
-CentOS
+CentOS & Amazon Linux
 
 ```shell
 sudo yum update && sudo yum upgrade -y
 ```
 
-Take note of the IP addresses for each machine, since the instructions can't assume what they will be. 
+Take note of the IP addresses for each machine (run `ifconfig`), since the instructions can't assume what they will be. 
 
 Fill in with the actual IP when required. These will be noted by:
 
@@ -34,10 +34,33 @@ Debian & Ubuntu
 sudo apt -y install git build-essential net-tools vim curl ntp screen
 ```
 
-CentOS
+CentOS & Amazon Linux
 
 ```shell
 sudo yum -y install git gcc gcc-c++ make openssl-devel net-tools vim curl ntp screen yum-utils
+```
+
+Start the ntp service
+
+Debian & Ubuntu
+
+```shell
+sudo /etc/init.d/ntp start
+sudo systemctl enable ntp
+```
+
+CentOS
+
+```shell
+sudo systemctl start ntpd
+sudo update-rc.d ntpd enable
+```
+
+Amazon Linux
+
+```shell
+sudo /etc/init.d/ntpd start
+sudo chkconfig ntpd on
 ```
 
 ### Set up Go 1.9.2
@@ -85,6 +108,12 @@ CentOS
 sudo yum -y install net-tools vim screen postgresql-server postgresql-contrib yum-utils
 ```
 
+Amazon Linux
+
+```shell
+sudo yum -y install net-tools vim screen postgresql96-server yum-utils
+```
+
 ### Set up PostgreSQL (Debian & Ubuntu)
 
 Replace 9.6 with your version number. You can find this with "ls /etc/postgresql"
@@ -100,15 +129,10 @@ sudo sh -c "echo \"listen_addresses = 'CHAINLINK_IP'\" >> postgresql.conf"
 sudo sh -c "echo \"host all all CHAINLINK_IP/## trust\" >> pg_hba.conf"
 ```
 
-Restart PostgreSQL
+Start PostgreSQL
 
 ```shell 
 sudo /etc/init.d/postgresql restart
-```
-
-Start PostgreSQL at boot
-
-```shell
 sudo update-rc.d postgresql enable
 ```
 
@@ -134,12 +158,32 @@ Start PostgreSQL
 
 ```shell
 sudo systemctl start postgresql
+sudo systemctl enable postgresql
 ```
 
-Start PostgreSQL at boot
+## Set up PostgreSQL (Amazon Linux)
+
+Init the database
 
 ```shell
-sudo systemctl enable postgresql
+sudo service postgresql initdb
+```
+
+If you're setting up the node with different IPs, change them here
+
+```shell
+sudo su postgres 
+cd /var/lib/pgsql9/data
+sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
+sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
+exit
+```
+
+Start PostgreSQL
+
+```shell 
+sudo /etc/init.d/postgresql restart
+sudo chkconfig docker on
 ```
 
 ## Chainlink core
@@ -153,6 +197,12 @@ sudo apt -y install net-tools vim apt-transport-https ca-certificates curl gnupg
 ```
 
 CentOS
+
+```shell
+sudo yum -y install net-tools vim ca-certificates curl gnupg2 screen yum-utils
+```
+
+Amazon Linux
 
 ```shell
 sudo yum -y install net-tools vim ca-certificates curl gnupg2 screen yum-utils
@@ -184,6 +234,14 @@ CentOS
 sudo yum-config-manager  --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum -y install docker-ce
 sudo systemctl start docker
+```
+
+Amazon Linux
+
+```shell
+sudo yum -y install docker
+sudo /etc/init.d/docker start
+sudo chkconfig docker on
 ```
 
 Allow use of Docker commands without sudo
