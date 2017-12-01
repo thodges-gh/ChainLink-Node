@@ -10,13 +10,11 @@ Debian & Ubuntu
 sudo apt update -y && sudo apt upgrade -y
 ```
 
-CentOS
+CentOS & Amazon Linux
 
 ```shell
 sudo yum update && sudo yum upgrade -y
 ```
-
-
 
 Install what we can from the default repository:
 
@@ -32,18 +30,33 @@ CentOS
 sudo yum -y install git gcc gcc-c++ make openssl-devel net-tools vim ca-certificates curl wget gnupg2 ntp screen postgresql-server postgresql-contrib yum-utils
 ```
 
+Amazon Linux
+
+```shell
+sudo yum -y install git gcc gcc-c++ make openssl-devel net-tools vim ca-certificates curl wget gnupg2 ntp screen postgresql96-server yum-utils
+```
+
 Start the ntp service
 
 Debian & Ubuntu
 
 ```shell
 sudo /etc/init.d/ntp start
+sudo systemctl enable ntp
 ```
 
 CentOS
 
 ```shell
 sudo systemctl start ntpd
+sudo update-rc.d ntpd enable
+```
+
+Amazon Linux
+
+```shell
+sudo /etc/init.d/ntpd start
+sudo chkconfig ntpd on
 ```
 
 ## Installing Docker
@@ -74,7 +87,15 @@ sudo yum -y install docker-ce
 sudo systemctl start docker
 ```
 
-Allow use of Docker commands without sudo
+Amazon Linux
+
+```shell
+sudo yum -y install docker
+sudo /etc/init.d/docker start
+sudo chkconfig docker on
+```
+
+Allow use of Docker commands without sudo (Not on Amazon Linux)
 
 ```shell
 sudo gpasswd -a $USER docker
@@ -86,6 +107,7 @@ su $USER
 ```shell
 screen
 ```
+
 ### If using a separate machine for your Ethereum node, skip to the PostgreSQL section
 
 ### Set up Go 1.9.2
@@ -132,15 +154,10 @@ sudo sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
 sudo sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
 ```
 
-Restart PostgreSQL
+Start PostgreSQL
 
 ```shell 
 sudo /etc/init.d/postgresql restart
-```
-
-Start PostgreSQL at boot
-
-```shell
 sudo update-rc.d postgresql enable
 ```
 
@@ -166,12 +183,32 @@ Start PostgreSQL
 
 ```shell
 sudo systemctl start postgresql
+sudo systemctl enable postgresql
 ```
 
-Start PostgreSQL at boot
+## Set up PostgreSQL (Amazon Linux)
+
+Init the database
 
 ```shell
-sudo systemctl enable postgresql
+sudo service postgresql initdb
+```
+
+If you're setting up the node with different IPs, change them here
+
+```shell
+sudo su postgres 
+cd /var/lib/pgsql9/data
+sh -c "echo \"listen_addresses = '172.17.0.1'\" >> postgresql.conf"
+sh -c "echo \"host all all 172.17.0.0/16 trust\" >> pg_hba.conf"
+exit
+```
+
+Start PostgreSQL
+
+```shell 
+sudo /etc/init.d/postgresql restart
+sudo chkconfig docker on
 ```
 
 ## Finally set up Chainlink:
