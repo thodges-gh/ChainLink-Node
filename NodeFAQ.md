@@ -50,7 +50,11 @@ You'll set your own prices (paid in LINK) for retriving data from 3rd party sour
 
 ## What is the process for how the LINK token is used?
 
-When a user creates a smart contract, they'll be able to put a price (in LINK) on how much they're willing to pay for the data retrieval. Nodes will bid on those smart contracts by paying the penalty fee (in LINK). Nodes not selected will be able to withdraw their LINK that they spent on bidding. Nodes that were selected will be able to withdraw their penalty fee and rewards for data retrieval after they have submitted data which was accepted by the smart contract.
+When a user creates a smart contract, they'll be able to put a price (in LINK) on how much they're willing to pay for the data retrieval. Nodes will bid on those smart contracts by paying the penalty fee (in LINK) if the smart contract creator has decided to set an amount for the penalty fee. Nodes not selected will be able to withdraw their LINK that they spent on bidding. Nodes that were selected will be able to withdraw their penalty fee and rewards for data retrieval after they have submitted data which was accepted by the smart contract.
+
+As the node returns acceptable data to the smart contract, it will be paid (in LINK) for both partial and whole (whichever is relevant) completion. For example, if an assignment is to retrieve a data point from a data provider once, then upon completion, the node would be paid for 100% of the assignment. Another example, if an assignment is to retrieve a data point from a provider every day for 30 days, then each time the node returns acceptable data to the smart contract, it will be paid as a percentage of the total assignment.
+
+Payment for assignment completion and penalty withdrawals accumulate over time, instead of automatically being released back to the node's Ethereum address. The node operator will need to pay the gas fee in order to withdraw the accumulated LINK.
 
 ---
 
