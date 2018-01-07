@@ -28,10 +28,16 @@ Fill in with the actual IP when required. These will be noted by:
 
 ### Install required packages
 
-Debian & Ubuntu
+Debian
 
 ```shell
 sudo apt -y install git build-essential net-tools vim curl ntp screen
+```
+
+Ubuntu
+
+```shell
+sudo apt -y install ntp screen software-properties-common
 ```
 
 CentOS & Amazon Linux
