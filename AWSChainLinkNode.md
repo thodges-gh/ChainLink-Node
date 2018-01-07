@@ -23,6 +23,8 @@ The Ethereum node is currently the most resource hungry piece required for Chain
 * Connect to the instance
 * Follow Geth Node installation instructions
 
+Experimental: modify swap file to use the free-tier image
+
 ## Database instance
 
 A significant advantage of using AWS for ChainLink is that very little configuration is necessary in order to configure PostgreSQL. Instead of having to modify routes and setting up roles, we can simply create a basic instance without a database and initialize it from the ChainLink core software.
