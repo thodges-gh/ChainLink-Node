@@ -6,11 +6,9 @@ For these instructions, I give examples for names when you would encounter an in
 
 ## Ethereum node
 
-The Ethereum node is currently the most resource hungry piece required for ChainLink. In the future, more 3rd party Ethereum nodes should support RPC calls. However, use them at your own risk since if they go down, your ChainLink node will not be able to communicate with the Ethereum blockchain.
-
 * Click Launch Instance from the EC2 Dashboard
-* Choose the first image (Amazon Linux AMI)
-* t2.medium minimum, m4.large recommended
+* Choose the Ubuntu image
+* t2.micro
 * Security Group (make sure 172.31.X.X is valid for your private IPs, change if necessary)
   * Add rule: Custom TCP Rule
   * Port: 8545
@@ -22,8 +20,6 @@ The Ethereum node is currently the most resource hungry piece required for Chain
 * Launch Instances
 * Connect to the instance
 * Follow Geth Node installation instructions
-
-Experimental: modify swap file to use the free-tier image
 
 ## Database instance
 
