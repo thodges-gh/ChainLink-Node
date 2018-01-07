@@ -63,7 +63,28 @@ sudo /etc/init.d/ntpd start
 sudo chkconfig ntpd on
 ```
 
-### Set up Go 1.9.2
+Set up swap file
+
+```shell
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo su
+echo '/swapfile none swap sw 0 0' >> /etc/fstab
+exit
+sudo /sbin/shutdown -r now
+```
+
+### Install Ethereum (Ubuntu)
+
+```shell
+sudo apt-get install software-properties-common
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+```
+
+### Set up Go 1.9.2 (All others)
 
 Download and install Go:
 
@@ -80,17 +101,15 @@ echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 ```
 
-### Install Ethereum locally (geth)
+### Install Ethereum locally (All others)
 
 Replace `GETH_NODE_IP` with the IP of the machine running the Geth node
 
 ```shell
 git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
-./build/bin/geth --rpc --rpcaddr GETH_NODE_IP --syncmode "light"
+./build/bin/geth --fast --cache=16 --rpc --rpcaddr GETH_NODE_IP --ipcdisable
 ```
-
-Running geth with the `--fast` option will also work instead of `--syncmode "light"`, but you can't do both
 
 ## PostgreSQL
 
