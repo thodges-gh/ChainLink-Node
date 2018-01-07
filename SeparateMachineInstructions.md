@@ -108,6 +108,19 @@ Replace `GETH_NODE_IP` with the IP of the machine running the Geth node
 ```shell
 git clone https://github.com/ethereum/go-ethereum.git && cd go-ethereum
 make geth
+```
+
+### Run Geth
+
+Ubuntu
+
+```shell
+geth --fast --cache=16 --rpc --rpcaddr GETH_NODE_IP --ipcdisable
+```
+
+All others
+
+```shell
 ./build/bin/geth --fast --cache=16 --rpc --rpcaddr GETH_NODE_IP --ipcdisable
 ```
 
