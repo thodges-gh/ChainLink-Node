@@ -118,6 +118,8 @@ make geth
 
 ### Run Geth
 
+Also try running `--syncmode "light"` if storage usage is too high.
+
 Ubuntu
 
 ```shell
