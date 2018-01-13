@@ -37,16 +37,8 @@ You can copy/paste this into a text file. This is what makes up a keystore file.
 
 If using separate instances and you cannot log into the console for PostgreSQL, you can still access the data via ActiveRecord and the Rails console.
 
-Run the Rails console on your ChainLink node instance
-
 ```shell
-docker run -it --env-file=.env smartcontract/chainlink rails c
-```
-
-Then run this command to interact with the database using ActiveRecord
-
-```ruby
-KeyPair.select("encrypted_private_key").where("owner_type = 'Ethereum::Account'").as_json
+docker run -it --env-file=.env smartcontract/chainlink rails runner "puts KeyPair.select(\"encrypted_private_key\").where(\"owner_type = 'Ethereum::Account'\").as_json"
 ```
 
 You will need to remove the escaped quotes, but the data itself is the same as if you were to connect to the database directly.
