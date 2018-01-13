@@ -33,6 +33,24 @@ It should look like this:
 
 You can copy/paste this into a text file. This is what makes up a keystore file. You can now open it up with any application that uses keystore files with the password given to the `PRIVATE_KEY_PASSWORD` variable in the .env file.
 
+## Via Rails Console
+
+If using separate instances and you cannot log into the console for PostgreSQL, you can still access the data via ActiveRecord and the Rails console.
+
+Run the Rails console on your ChainLink node instance
+
+```shell
+docker run -it --env-file=.env smartcontract/chainlink rails c
+```
+
+Then run this command to interact with the database using ActiveRecord
+
+```ruby
+KeyPair.select("encrypted_private_key").where("owner_type = 'Ethereum::Account'").as_json
+```
+
+You will need to remove the escaped quotes, but the data itself is the same as if you were to connect to the database directly.
+
 ## Questions / Issues
 
 ### I already initialized my database without a value set for PRIVATE_KEY_PASSWORD, what do I do?
