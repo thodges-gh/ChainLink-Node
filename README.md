@@ -1,7 +1,5 @@
 # Running a Chainlink node!
 
-2 cores, 4GB RAM, and 16GB storage is recommended.
-
 Ensure that your system is up to date and fully patched
 
 Debian & Ubuntu
