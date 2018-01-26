@@ -13,6 +13,8 @@
         * Penalty amount
 
         * Aggregating contracts
+        
+    * User pays to fund the contract
 
     *	Submit SLA to Order-Matching contract
 
@@ -61,3 +63,5 @@
 * Payments for providing data to the user's smart contract may also be withdrawn after returning accepted answers
 
 * Withdrawing penalty payments and normal payments for retriving data incur a transaction fee (gas) so it is not automatic
+
+* The smart contract creator may retrieve lost penalty payments by nodes reporting unacceptable data
